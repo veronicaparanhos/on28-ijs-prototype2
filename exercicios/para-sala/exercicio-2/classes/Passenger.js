@@ -4,10 +4,14 @@ export class Passenger {
 	password;
 	amountSpent = 0;
 
+	static passengers = [];
+
 	constructor(name, age, password) {
 		this.name = name;
 		this.age = age;
 		this.password = password;
+		Passenger.passengers.push({ name, age })
+		// this.constructor.passengers.push({ name, age }) // Podemos utilizar também dessa maneira
 	}
 
 	requestDrive(driver, amount, password) {
@@ -21,5 +25,9 @@ export class Passenger {
 		}
 		this.amountSpent -= amount;
 		driver.runDrive(amount);
+	}
+
+	static numberOfPassengers() {
+		console.log(`A quantidade de passageiras cadastradas é ${Passenger.passengers.length}`)
 	}
 }
