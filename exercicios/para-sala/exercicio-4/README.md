@@ -7,11 +7,10 @@
 
 Agora, vamos agora melhorar a estrutura do nosso código.
 
-Utilize os conceitos de herança, sobrescrita de construtor e sobrescrita de métodos para evitar repetição de código.
-
+##### a) Utilize os conceitos de herança, sobrescrita de construtor e sobrescrita de métodos para evitar repetição de código.
 Para isso, crie uma classe `Person` que servirá como classe a ser herdada por `Driver` e por `Passenger`.
-Coloque nela **tudo** o que for comum entre essas duas classes.
 
+##### b) Coloque na nova classe `Person` **tudo** o que for comum entre as  classes Driver e Passenger.
 Todas as regras criadas anteriormente precisam continuar funcionando.
 
 Teste tudo o que foi criado.

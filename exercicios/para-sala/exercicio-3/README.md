@@ -7,10 +7,12 @@
 
 Agora, vamos tornar nosso app mais seguro.
 
-Não é interessante que a senha das nossas passageiras fiquem visíveis. Portanto, faça com que ela seja privada dentro da classe e crie um método que possibilite a alteração de senha. Para isso, será necessário que a passageira informe a senha antiga e a nova senha para que consiga alterá-la. A senha das nossas passageiras não deve ser visível em momento algum.
+Não é interessante que a senha das nossas passageiras fiquem visíveis. Portanto:
 
-Além disso, torne privado o `amount`, tanto das passageiras, quanto das motoristas, para que eles não apareçam em nosso console.log.
-Porém, deve continuar sendo possível atualizá-los a cada corrida e, quando necessário, eles podem ser visualizados.
+##### a) faça com que a senha seja privada dentro da classe e crie um método que possibilite a alteração de senha. Para isso, será necessário que a passageira informe a senha antiga e a nova senha para que consiga alterá-la. A senha das nossas passageiras não deve ser visível em momento algum.
+
+Também não é interessante que o amount fique visível Portanto:
+##### b) torne privado o `amount`, tanto das passageiras, quanto das motoristas, para que eles não apareçam em nosso console.log. Porém, deve continuar sendo possível atualizá-los a cada corrida e, quando necessário, eles podem ser visualizados.
 
 Teste tudo o que foi criado.
 

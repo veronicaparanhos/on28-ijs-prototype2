@@ -7,6 +7,8 @@
 
 Vamos criar um aplicativo de corridas estilo Uber apenas para mulheres.
 
+##### a) Crie a classe Driver e seus atributos
+
 Pra começar, defina uma função construtora ES6 Instantiation (Classe) para um objeto `Driver`.
 
 Essa classe deve possuir os seguintes atributos:
@@ -15,13 +17,7 @@ Essa classe deve possuir os seguintes atributos:
 - [ ] `numberOfRides` - Quantidade de corridas realizadas: inicializado com 0.
 - [ ] `amountEarned` - Valor recebidos em corridas: inicializado com 0.
 
-Além disso, a classe `Driver` deve possuir os seguintes métodos:
-- [ ] `runDrive(amount)`, que serve para a a motorista aceitar uma corrida.
-
-Esse método deve obedecer as seguintes regras:
-- O parâmetro `amount` é o valor da corrida.
-- O motorista aumenta em 1 a sua quantidade de corridas realizadas
-- O `amount` do motorista **aumenta** a cada corrida, de acordo com o parâmetro `amount` da função (esse valor será sempre **positivo**).
+##### b) Crie a classe Passenger e seus atributos
 
 Crie outra classe chamada `Passenger`.
 
@@ -31,7 +27,19 @@ Essa classe deve possuir os seguintes atributos:
 - [ ] `password` - Senha: recebido como parâmetro no constructor
 - [ ] `amountSpent` - Valor gasto em corridas: inicializado com 0.
 
-Além disso, a classe `Passenger` deve possuir os seguintes métodos:
+##### c) Crie o método abaixo
+
+A classe `Driver` deve possuir o seguinte método:
+- [ ] `runDrive(amount)`, que serve para a a motorista aceitar uma corrida.
+
+Esse método deve obedecer as seguintes regras:
+- O parâmetro `amount` é o valor da corrida.
+- O motorista aumenta em 1 a sua quantidade de corridas realizadas
+- O `amount` do motorista **aumenta** a cada corrida, de acordo com o parâmetro `amount` da função (esse valor será sempre **positivo**).
+
+##### d) Crie o método abaixo
+
+A classe `Passenger` deve possuir o seguinte método:
 - [ ] `requestDrive(driver, amount, password)`, que serve para a passageira solicitar uma corrida com uma motorista específica.
 
 Esse método deve obedecer as seguintes regras:

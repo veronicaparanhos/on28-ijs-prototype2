@@ -7,17 +7,24 @@
 
 Vamos continuar a criação do nosso aplicativo.
 
+#### a) Crie os atributos estáticos
+
 Agora, é de nosso interesse saber quantas motoristas e quantas passageiras estão cadastradas em nosso sistema.
 Então, em cada uma das nossas classes, crie uma propriedade estática que armazene uma array com o nome e idade de cada motorista/passageira criada a partir daquela classe.
 
 - `drivers`
 - `passengers`
 
-Além disso, crie métodos estáticos que nos retorne:
-- [ ] `numberOfDrivers` - A quantidade de motoristas.
-- [ ] `ageAverage` - A média de idade das motoristas com 2 casas decimais.
-- [ ] `numberOfPassengers` - A quantidade de passageiras.
-- [ ] `ageAverage` - A média de idade das passageiras com 2 casas decimais.
+Além disso, crie métodos estáticos:
+
+#### b) Crie os métodos abaixo
+
+- [ ] `numberOfDrivers` - Informa a quantidade de motoristas.
+- [ ] `numberOfPassengers` - Informa a quantidade de passageiras.
+
+#### c) Crie os métodos abaixo
+- [ ] `ageAverage` - Informa a média de idade das motoristas com 2 casas decimais.
+- [ ] `ageAverage` - Informa a média de idade das passageiras com 2 casas decimais.
 
 Teste tudo o que foi criado.
 
