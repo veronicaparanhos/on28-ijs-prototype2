@@ -1,9 +1,161 @@
 # Exercício de Casa 🏠 
+### 1 - Bank
+Defina uma classe para um objeto `Bank`.
+O banco deve possuir as seguintes propriedades:
+- [ ] `bankCode`: Código do banco
+  - Número do banco, recebido por parâmetro durante a instanciação.
 
-## Nome do Exercicio
+- [ ] `bankName`: Nome do banco
+  - Recebido por parâmetro durante a instanciação.
 
-- Explicação do exercício: 
-[CONTEUDO] 
+- [ ] `transferTax`: Taxa de transferência para outros bancos
+  - Recebido por parâmetro durante a instanciação.
+  - Deve ser um parâmetro privado.
+  - Deve ter um método get e um método set.
+
+- [ ] `createdBanks`: Bancos criados
+  - Propriedade **estática**, sendo ela uma array de objetos que é inicialmente vazia e é atualizada a cada vez que um novo banco é criado, contendo:
+    - `Código do banco criado`
+    - `Quantidade de clientes que esse banco possui`
+      - Esse valor deve ser inicializado com 0 e aumentar a medida que um cliente é associado a esse banco.
+
+Exemplo de um objeto Bank:
+```javascript
+// A propriedade estática createdBanks é uma array vazia
+// antes de nenhum banco ter sido criado:
+console.log(Bank.createdBanks); // [ ]
+
+const bank1 = new Bank(100, 'LuaBank', 0.01); // Instanciação de um objeto Bank.
+console.log(bank1); // { bankCode: 100, bankName: 'LuaBank' }
+
+// Agora a propriedade estática createdBanks é uma
+// array que contém 1 objeto, que corresponde ao banco criado.
+// O objeto possui o código do banco e a quantidade de clientes (que inicialmente é 0):
+console.log(Bank.createdBanks); // [ { bankCode: 100, qtdClients: 0 } ]
+
+console.log(bank1.transferTax); // 0.01
+bank1.transferTax = 0.02
+console.log(bank1.transferTax); // 0.02
+```
+
+### 2 - Person
+Defina uma classe `Person` com as seguintes características:
+
+A classe deve possuir as seguintes propriedades:
+- [ ] `name`
+  - Nome, recebido por parâmetro durante a instanciação.
+
+- [ ] `CPF`
+  - CPF, recebido por parâmetro durante a instanciação.
+  - Deve ser um parâmetro privado.
+
+Exemplo de um objeto Person:
+```javascript
+const person1 = new Person('Maria', 12345678900); // Instanciação de um objeto Person.
+console.log(person1); // { name: 'Maria' }
+```
+
+### 3 - Client
+Defina ainda uma classe `Client`, herdando de `Person`.
+A classe deve possuir as seguintes propriedades:
+
+- [ ] `banks`: Uma array de bancos ao qual é associada 
+  - Deve ser inicializado vazio.
+
+Como métodos da classe `Client`, temos:
+- [ ] `addBank(bank)`: associa um banco a esse cliente.
+  - O parâmetro `bank` deve obrigatoriamente ser do tipo `Bank`.
+  - Verifique se o cliente já tem esse banco associado a ele. Se tiver, retorne uma mensagem e não adicione novamente.
+  - Lembrar de aumentar a quantidade de clientes que esse banco possui. 
+
+- [ ] `removeBank(bank)`: desassocia um banco a esse cliente.
+  - O parâmetro `bank` deve obrigatoriamente ser do tipo `Bank`.
+  - Verifique se o cliente tem esse banco associado a ele. Se não tiver, retorne uma mensagem e termine a execução da função.
+  - Lembrar de diminuir a quantidade de clientes que esse banco possui. 
+
+Exemplo:
+```javascript
+const client1 = new Client('Maria', 123); // Instanciação de um objeto Client.
+console.log(client1); // { name: 'Maria', banks: [] }
+console.log(client1.cpf); // 12345678900
+
+// Adicionando um banco a um cliente
+client1.addBank(bank1); // Banco 100 adicionado à cliente Maria
+console.log(client1);// { name: 'Maria', banks: [ Bank { bankCode: 100, bankName: 'LuaBank' } ] }
+
+// Removendo um banco de um cliente
+client1.removeBank(bank1); // Banco 100 removido da cliente Maria
+console.log(client1); // { name: 'Maria', banks: [] }
+```
+
+### 4 - BankAccount
+Por fim, defina uma classe para um objeto `BankAccount`.
+A conta deve possuir as seguintes propriedades:
+- [ ] `client`: Cliente a qual essa conta pertence
+  - O parâmetro deve obrigatoriamente ser do tipo `Client`.
+  - Recebido por parâmetro durante a instanciação.
+
+- [ ] `Bank`: Banco
+  - O parâmetro deve obrigatoriamente ser do tipo `Bank`.
+  - A conta só pode ser criada caso a pessoa seja cliente desse banco.
+  - Recebido por parâmetro durante a instanciação.
+
+- [ ] `accountNumber`: Número da conta
+  - Recebido por parâmetro durante a instanciação.
+  
+- [ ] `agencyNumber`: Número da agência bancária
+  - Recebido por parâmetro durante a instanciação.
+  
+- [ ] `balance`: O saldo
+  - Deve ser inicializado com 0.
+  - Deve ser um parâmetro privado.
+  - Deve ter um método get.
+
+A classe `BankAccount` possui os seguintes métodos:
+- [ ] `credit(amount)`: adiciona o valor especificado ao montante.
+  - Imprima na console o resultado.
+
+- [ ] `debit(amount)`: subtrai o valor especificado do montante.
+  - Imprima na console o resultado.
+
+- [ ] `transferTo(anotherAccount, amount)`: transfere o valor especificado desta conta para a outra conta.
+  - O parâmetro `anotherAccount` deve obrigatoriamente ser do tipo `BankAccount`.
+  - Caso não haja valor suficiente para a operação, ela deve retornar uma mensagem para o usuário.
+  - Caso a transferência seja para um banco diferente do cliente que está realizando, utilize a taxa do banco de origem.
+  - Imprima na console o resultado.
+
+- [ ] `closeAccount()`: encerra a conta.
+  - Caso a conta possua saldo não é possível encerrá-la.
+  - Imprima na console o resultado.
+
+---
+
+### DESAFIO
+> Essa etapa **não** é obrigatória!!!
+> Faça apenas se tiver terminado a etapa obrigatória e quiser se aventurar nesse desafio.
+
+Na classe `BankAccount`, acrescente os seguintes atributos:
+
+ - [ ] `qtdWithdrawal`: Quantidade de retiradas de dinheiro em bancos 24 horas
+   - Deve ser inicializado com 0.
+   - Deve ser um parâmetro privado.
+   - Deve ter um método get.
+ 
+ - [ ] `withdrawalTax`: Taxa a ser cobrada em cada retirada em bancos 24 horas
+   - Cada conta tem direito a realizar X (você define) retiradas gratuitas. Após isso, essa taxa começa a ser cobrada em cada retirada.
+   - Deve ser inicializada com algum valor (exemplo: 0.03).
+   - Deve ser um parâmetro privado.
+   - Deve ter um método get e um método set.
+
+Acrescente também o seguinte método:
+ - [ ] `cashWithdrawal(amount)`: realiza retiradas de dinheiro em bancos 24 horas.
+   - Caso a quantidade de retiradas tenha ultrapassado o limite, a taxa deve ser cobrada.
+   - A cada retirada realizada, informe ao cliente quantas retiradas ele já realizou e se ainda possui retiradas gratuitas.
+     - Se sim, informe quantas.
+    - Se não, informe a taxa que será cobrada a cada retirada.
+  - Caso não haja valor suficiente para a operação, ela deve retornar uma mensagem para o usuário.
+  - Imprima na console o resultado.
+
 ---
 
 Terminou o exercício? Dá uma olhada nessa checklist e confere se tá tudo certinho, combinado?!
