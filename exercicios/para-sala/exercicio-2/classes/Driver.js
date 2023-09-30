@@ -26,4 +26,13 @@ export class Driver {
 	static numberOfDrivers() {
 		console.log(`A quantidade de motoristas cadastradas é ${Driver.drivers.length}.`)
 	}
+
+	static ageAverage() {
+		const totalOfDrivers = Driver.drivers.length;
+		if(totalOfDrivers === 0) return;
+
+		const sumOfAges = Driver.drivers.reduce((total, driver) => total + driver.age, 0);
+		const ageAverage = (sumOfAges/totalOfDrivers).toFixed(2);
+		console.log(`A média da idade das motoristas é ${ageAverage}.`);
+	}
 }

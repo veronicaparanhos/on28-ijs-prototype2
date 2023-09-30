@@ -30,4 +30,13 @@ export class Passenger {
 	static numberOfPassengers() {
 		console.log(`A quantidade de passageiras cadastradas é ${Passenger.passengers.length}`)
 	}
+
+	static ageAverage() {
+		const totalOfPassengers = Passenger.passengers.length;
+		if(totalOfPassengers === 0) return;
+
+		const sumOfAges = Passenger.passengers.reduce((total, passenger) => total + passenger.age, 0);
+		const ageAverage = (sumOfAges/totalOfPassengers).toFixed(2);
+		console.log(`A média da idade das passageiras é ${ageAverage}.`);
+	}
 }
