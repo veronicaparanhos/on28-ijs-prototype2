@@ -128,6 +128,41 @@ A classe `BankAccount` possui os seguintes métodos:
   - Caso a conta possua saldo não é possível encerrá-la.
   - Imprima na console o resultado.
 
+Exemplo:
+```javascript
+const bankAccount1 = new BankAccount(client1, bank1, 1111, 2222); // Instanciação de um objeto BankAccount.
+console.log(bankAccount1);
+// { 
+//   client: Client { name: 'Maria', banks: [ [Bank] ] },
+//   bank: Bank { bankCode: 100, bankName: 'LuaBank' },
+//   accountNumber: 1111,
+//   agencyNumber: 2222,
+// }
+
+console.log(bankAccount1.balance); // 0
+
+// Creditando dinheiro na conta
+bankAccount1.credit(1000); // O novo saldo da conta é: R$ 1000
+
+// Debitando dinheiro da conta
+bankAccount1.debit(300); // O novo saldo da conta é: R$ 700
+
+// Transferindo de uma conta para outra
+bankAccount1.transferTo(bankAccount2, 200);
+// O saldo atual da conta de origem é de R$ 500
+
+// Fechando a conta
+bankAccount1.closeAccount(); // Conta encerrada!
+
+console.log(bankAccount1);
+// BankAccount {
+//   client: undefined,
+//   bank: undefined,
+//   accountNumber: undefined,
+//   agencyNumber: undefined,
+// }
+```
+
 ---
 
 ### DESAFIO
@@ -155,6 +190,45 @@ Acrescente também o seguinte método:
     - Se não, informe a taxa que será cobrada a cada retirada.
   - Caso não haja valor suficiente para a operação, ela deve retornar uma mensagem para o usuário.
   - Imprima na console o resultado.
+
+Exemplo:
+```javascript
+const bankAccount1 = new BankAccount(client1, bank1, 1111, 2222); // Instanciação de um objeto BankAccount.
+console.log(bankAccount1);
+// { 
+//   client: Client { name: 'Maria', banks: [ [Bank] ] },
+//   bank: Bank { bankCode: 100, bankName: 'LuaBank' },
+//   accountNumber: 1111,
+//   agencyNumber: 2222,
+//   qtdWithdrawal: 0
+// }
+
+console.log(bankAccount1.qtdWithdrawal); // 0
+console.log(bankAccount1.withdrawalTax); // 0.03
+bankAccount1.withdrawalTax = 0.02;
+
+// Retirando no banco 24 horas (cenário de 2 retiradas gratuitas)
+bankAccount1.cashWithdrawal(100);
+// As primeiras 2 retiradas são gratuitas.
+// Retirada realizada. O saldo atual da conta é de R$ 900.
+// Total de retiradas realizadas: 1
+// Você ainda possui 1 retirada gratuita.
+
+bankAccount1.cashWithdrawal(100);
+// As primeiras 2 retiradas são gratuitas.
+// Retirada realizada. O saldo atual da conta é de R$ 800.
+// Total de retiradas realizadas: 2
+// Você não possui mais nenhuma retirada gratuita.
+
+bankAccount1.cashWithdrawal(100);
+// As primeiras 2 retiradas são gratuitas.
+// Retirada realizada. O saldo atual da conta é de R$ 697.
+// Total de retiradas realizadas: 3
+// Você não possui mais nenhuma retirada gratuita.
+
+// Fechando a conta
+bankAccount1.closeAccount(); // Conta encerrada!
+```
 
 ---
 
