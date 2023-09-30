@@ -39,7 +39,7 @@ console.log(bank1.transferTax); // 0.02
 ```
 
 ### 2 - Client
-Defina ainda uma classe `Client`, herdando de `Person`.
+Defina ainda uma classe `Client`.
 A classe deve possuir as seguintes propriedades:
 
 - [ ] `name`
