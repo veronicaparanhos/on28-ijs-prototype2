@@ -10,18 +10,26 @@ Vamos criar um aplicativo de corridas estilo Uber apenas para mulheres.
 Pra começar, defina uma função construtora ES6 Instantiation (Classe) para um objeto `Driver`.
 
 Essa classe deve possuir os seguintes atributos:
-- [ ] `Nome` - recebido como parâmetro no constructor
-- [ ] `Idade` - recebido como parâmetro no constructor. Só é possível ser motorista caso a idade seja maior ou igual 18. Caso contrário, o objeto motorista não pode ser criado.
-- [ ] `Quantidade de corridas realizadas` - inicializado com 0.
-- [ ] `Valor recebidos em corridas` - inicializado com 0.
+- [ ] `name` - Nome: recebido como parâmetro no constructor
+- [ ] `age` - Idade: recebido como parâmetro no constructor. Só é possível ser motorista caso a idade seja maior ou igual 18. Caso contrário, o objeto motorista não pode ser criado.
+- [ ] `numberOfRides` - Quantidade de corridas realizadas: inicializado com 0.
+- [ ] `amountEarned` - Valor recebidos em corridas: inicializado com 0.
+
+Além disso, a classe `Driver` deve possuir os seguintes métodos:
+- [ ] `getDrive(amount)`, que serve para a a motorista aceitar uma corrida.
+
+Esse método deve obedecer as seguintes regras:
+- O parâmetro `amount` é o valor da corrida.
+- O motorista aumenta em 1 a sua quantidade de corridas realizadas
+- O `amount` do motorista **aumenta** a cada corrida, de acordo com o parâmetro `amount` da função (esse valor será sempre **positivo**).
 
 Crie outra classe chamada `Passenger`.
 
 Essa classe deve possuir os seguintes atributos:
-- [ ] `Nome` - recebido como parâmetro no constructor
-- [ ] `Idade` - recebido como parâmetro no constructor
-- [ ] `Senha` - recebido como parâmetro no constructor
-- [ ] `Valor gasto em corridas` - inicializado com 0.
+- [ ] `name` - Nome: recebido como parâmetro no constructor
+- [ ] `age` - Idade: recebido como parâmetro no constructor
+- [ ] `password` - Senha: recebido como parâmetro no constructor
+- [ ] `amountSpent` - Valor gasto em corridas: inicializado com 0.
 
 Além disso, a classe `Passenger` deve possuir os seguintes métodos:
 - [ ] `requestDrive(driver, amount, password)`, que serve para a passageira solicitar uma corrida com uma motorista específica.
@@ -31,9 +39,8 @@ Esse método deve obedecer as seguintes regras:
 - O parâmetro `amount` é o valor da corrida.
 - A corrida só pode ser solicitada se a senha (`password`) estiver correta.
 - O parâmetro `driver` precisa, obrigatoriamente, ser do tipo `Driver`, caso contrário, a requisição não pode ser realizada.
-- O motorista aumenta em 1 a sua quantidade de corridas realizadas
-- O `amount` do motorista **aumenta** a cada corrida, de acordo com o parâmetro `amount` da função (esse valor será sempre **positivo**).
 - O `amount` do passageiro **diminui** a cada corrida, de acordo com o parâmetro `amount` da função (esse valor será sempre **negativo**).
+- O método `getDrive(amount)` da motorista deve ser chamado, para aumentar o `amountEarned` e o `numberOfRides` da motorista escolhida.
 
 Teste tudo o que foi criado.
 
