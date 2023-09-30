@@ -282,6 +282,8 @@ Podemos criar um exemplo, uma propriedade que conta a quantidade de animais cria
 
 ```javascript
 class Animal {
+	static animals = [];
+
 	constructor(type, name, age, hungry) {
 		this.type = type;
 		this.name = name;
@@ -300,8 +302,6 @@ class Animal {
 		this.energy += hours;
 		console.log(`Energia atual: ${this.energy}`);
 	}
-
-	static animals = [];
 }
 
 console.log(Animal.animals); //[]
@@ -314,12 +314,14 @@ const animal4 = new Animal('cachorro', 'Cacau', 3, 17);
 console.log(Animal.animals); // [{ name: 'Aslam', hungry: 19 }, { name: 'Caju', hungry: 40 }, { name: 'Frida', hungry: 32 }, { name: 'Cacau', hungry: 17 }]
 ```
 
-No exemplo acima, o array `animals` pertence à classe Animal, não a algum objeto instanciado. Portanto, conseguimos accesar essa propriedade sem precisar chamar nenhum objeto.
+No exemplo acima, o array `animals` pertence à classe Animal, não a algum objeto instanciado. Portanto, conseguimos acesar essa propriedade sem precisar chamar nenhum objeto.
 
 Podemos ainda criar métodos estáticos, como por exemplo:
 
 ```javascript
 class Animal {
+	static animals = [];
+	
 	constructor(type, name, age, hungry) {
 		this.type = type;
 		this.name = name;
@@ -338,8 +340,6 @@ class Animal {
 		this.energy += hours;
 		console.log(`Energia atual: ${this.energy}`);
 	}
-
-	static animals = [];
 
 	static nextToEat(animalsToEat) {
 		const sortedByHungry = animalsToEat.sort((a, b) => {
