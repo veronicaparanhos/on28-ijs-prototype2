@@ -1,3 +1,6 @@
+import { Driver } from './classes/Driver.js';
+import { Passenger } from './classes/Passenger.js';
+
 const motorista1 = new Driver('Babi', 38);
 const motorista2 = new Driver('Jose', 23);
 

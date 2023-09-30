@@ -1,7 +1,6 @@
 import { Driver } from './classes/Driver.js';
 import { Passenger } from './classes/Passenger.js';
 
-const motorista0 = new Driver('Maria', 13);
 const motorista1 = new Driver('Babi', 38);
 const motorista2 = new Driver('Jose', 23);
 
@@ -24,3 +23,8 @@ console.log('passageira 1: ', passageira1);
 console.log('passageira 2: ', passageira2);
 console.log('motorista 1: ', motorista1);
 console.log('motorista 2: ', motorista2);
+
+console.log('amount da passageira 1: ', passageira1.amount);
+console.log('amount da passageira 2: ', passageira2.amount);
+console.log('amount da motorista 1: ', motorista1.amount);
+console.log('amount da motorista 2: ', motorista2.amount);
