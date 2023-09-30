@@ -363,6 +363,130 @@ Agora, criamos um método `nextToEat` que retorna o nome do próximo animal que 
 
 #### → Vamos aplicar? [Exercício 2](/exercicios/para-sala/exercicio-2)
 
+### Modificadores de acesso
+
+Os modificadores de acesso em JavaScript são muito recentes na linguagem. Mas eles jã existem há algum tempo em outras linguagens.
+Eles já foram estudados em "Encapsulamento", mas podemos lembrar a respeito.
+
+Em JavaScript, temos os seguintes tipos de acesso para as nossas propriedades e nossos métodos:
+
+- `public` (público)
+- `private` (privado) -> #
+
+#### Public
+
+Um método ou propriedade **pública** pode ser acessado em qualquer lugar da minha aplicação:
+
+```javascript
+class User {
+	name;
+	age;
+	email;
+	password;
+
+	constructor(name, age, email, password) {
+		this.name = name;
+		this.age = age;
+		this.email = email;
+		this.password = password;
+	}
+
+	speak() {
+		console.log(`A pessoa de nome ${this.name} está falando`);
+	}
+}
+
+const user1 = new User('Luara', 27, 'luarakerlen@hotmail.com', 123456);
+
+console.log(user1.name); //Luara
+console.log(user1.age); //27
+console.log(user1.email); //luarakerlen@hotmail.com
+console.log(user1.password); //123456
+```
+
+#### Private
+
+Um método ou propriedade **privado** pode ser acessado apenas dentro da própria classe, mas nunca em um objeto ou qualquer outro lugar.
+
+Esse modificador de acesso é muito útil quando temos informações que precisam estar naquele objeto, mas o mesmo não pode acessá-lo ou modificá-lo.
+
+Para indicar uma propriedade ou método privado, utilizamos o símbolo # antes do nome da propriedade ou do método.
+
+```javascript
+class User {
+	name;
+	age;
+	email;
+	password;
+
+	constructor(name, age, email, password) {
+		this.name = name;
+		this.age = age;
+		this.email = email;
+		this.password = password;
+	}
+
+	speak() {
+		console.log(`A pessoa de nome ${this.name} está falando`);
+	}
+
+	#encryptPassword() {
+		return (this.#password = `*** ${this.#password} + ***`);
+	}
+}
+
+const user1 = new User('Luara', 27, 'luarakerlen@hotmail.com', 123456);
+console.log(user1.#password); //ERRO: A propriedade '#password' não é acessível fora da classe 'User' porque tem um identificador privado.ts
+console.log(user1.#encryptPassword()); //ERRO: A propriedade '#encryptPassword' não é acessível fora da classe 'User' porque tem um identificador privado.
+```
+
+#### Get e Set
+
+As classes JavaScript contam com dois métodos especiais:
+- um com o prefixo `get`, que tem a função de **retornar um valor** de um parâmetro.
+- outro com prefixo `set` que serve para **atribuir um valor** a um parâmetro.
+
+Nós chamamos eles de Getters e Setters, pois eles tem a **função** de fazer um `get` (pegar) ou um `set` (atribuir).
+Ambos funcionam como se fossem uma propriedade da classe.
+
+Esses métodos são ideais para serem utilizados, quando temos parâmetros privados.
+
+```javascript
+class User {
+	name;
+	age;
+	email;
+	password;
+
+	constructor(name, age, email, password) {
+		this.name = name;
+		this.age = age;
+		this.email = email;
+		this.password = password;
+	}
+
+	speak() {
+		console.log(`A pessoa de nome ${this.name} está falando`);
+	}
+
+	#encryptPassword() {
+		return (this.#password = `*** ${this.#password} + ***`);
+	}
+
+	get password() {
+		//Aqui dentro, podemos ter verificações antes de retornar a senha para quem está pedindo, para tornar a nossa aplicação mais segura
+		return this.#password
+	}
+
+	set password(newPassword) {
+		//Aqui dentro, podemos ter verificações antes de trocar a senha para quem está solicitando a troca, para tornar a nossa aplicação mais segura
+		this.#password = newPassword
+	}
+}
+```
+
+#### → Vamos aplicar? [Exercício 3](/exercicios/para-sala/exercicio-3)
+
 ### Herança
 
 A herança permite definir uma classe que recebe todas as funcionalidades de uma classe pai e permite adicionar mais.
@@ -489,150 +613,6 @@ Ao criar uma instância de uma classe herdeira, nosso objeto passa a ser uma ins
 ```javascript
 console.log(user1 instanceof Person); //true
 console.log(user1 instanceof User); //true
-```
-
-#### → Vamos aplicar? [Exercício 3](/exercicios/para-sala/exercicio-3)
-
-### Modificadores de acesso
-
-Os modificadores de acesso em JavaScript são muito recentes na linguagem. Mas eles jã existem há algum tempo em outras linguagens.
-Eles já foram estudados em "Encapsulamento", mas podemos lembrar a respeito.
-
-Em JavaScript, temos os seguintes tipos de acesso para as nossas propriedades e nossos métodos:
-
-- `public` (público)
-- `private` (privado) -> #
-
-#### Public
-
-Um método ou propriedade **pública** pode ser acessado em qualquer lugar da minha aplicação:
-
-```javascript
-class Person {
-	constructor(name, age) {
-		this.name = name;
-		this.age = age;
-	}
-
-	speak() {
-		console.log(`A pessoa de nome ${this.name} está falando`);
-	}
-}
-
-class User extends Person {
-	constructor(name, age, email, password) {
-		super(name, age);
-		this.email = email;
-		this.password = password;
-	}
-
-	speak() {
-		super.speak();
-		console.log(`A pessoa que está falando é uma usuária.`);
-	}
-}
-
-const user1 = new User('Luara', 27, 'luarakerlen@hotmail.com', 123456);
-
-console.log(user1.name); //Luara
-console.log(user1.age); //27
-console.log(user1.email); //luarakerlen@hotmail.com
-console.log(user1.password); //123456
-```
-
-#### Private
-
-Um método ou propriedade **privado** pode ser acessado apenas dentro da própria classe, mas nunca em um objeto ou qualquer outro lugar.
-
-Esse modificador de acesso é muito útil quando temos informações que precisam estar naquele objeto, mas o mesmo não pode acessá-lo ou modificá-lo.
-
-Para indicar uma propriedade ou método privado, utilizamos o símbolo # antes do nome da propriedade ou do método.
-
-```javascript
-class Person {
-	constructor(name, age) {
-		this.name = name;
-		this.age = age;
-	}
-
-	speak() {
-		console.log(`A pessoa de nome ${this.name} está falando`);
-	}
-}
-
-class User extends Person {
-	#password;
-	constructor(name, age, email, password) {
-		super(name, age);
-		this.email = email;
-		this.#password = password;
-	}
-
-	speak() {
-		super.speak();
-		console.log(`A pessoa que está falando é uma usuária.`);
-	}
-
-	#encryptPassword() {
-		return (this.#password = `*** ${this.#password} + ***`);
-	}
-}
-
-const user1 = new User('Luara', 27, 'luarakerlen@hotmail.com', 123456);
-console.log(user1.#password); //ERRO: A propriedade '#password' não é acessível fora da classe 'User' porque tem um identificador privado.ts
-console.log(user1.#encryptPassword()); //ERRO: A propriedade '#encryptPassword' não é acessível fora da classe 'User' porque tem um identificador privado.
-```
-
-#### Get e Set
-
-As classes JavaScript contam com dois métodos especiais:
-- um com o prefixo `get`, que tem a função de **retornar um valor** de um parâmetro.
-- outro com prefixo `set` que serve para **atribuir um valor** a um parâmetro.
-
-Nós chamamos eles de Getters e Setters, pois eles tem a **função** de fazer um `get` (pegar) ou um `set` (atribuir).
-Ambos funcionam como se fossem uma propriedade da classe.
-
-Esses métodos são ideais para serem utilizados, quando temos parâmetros privados.
-
-```javascript
-class Person {
-	constructor(name, age) {
-		this.name = name;
-		this.age = age;
-	}
-
-	speak() {
-		console.log(`A pessoa de nome ${this.name} está falando`);
-	}
-}
-
-class User extends Person {
-	#password;
-	constructor(name, age, email, password) {
-		super(name, age);
-		this.email = email;
-		this.#password = password;
-	}
-
-	speak() {
-		super.speak();
-		console.log(`A pessoa que está falando é uma usuária.`);
-	}
-
-	#encryptPassword() {
-		return (this.#password = `*** ${this.#password} + ***`);
-	}
-
-	get password() {
-		//Aqui dentro, podemos ter verificações antes de retornar a senha para quem está pedindo, para tornar a nossa aplicação mais segura
-		return this.#password
-	}
-
-	set password(newPassword) {
-		//Aqui dentro, podemos ter verificações antes de trocar a senha para quem está solicitando a troca, para tornar a nossa aplicação mais segura
-		this.#password = newPassword
-	}
-}
 ```
 
 #### → Vamos aplicar? [Exercício 4](/exercicios/para-sala/exercicio-4)

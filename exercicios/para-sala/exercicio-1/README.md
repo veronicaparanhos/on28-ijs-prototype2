@@ -16,7 +16,7 @@ Essa classe deve possuir os seguintes atributos:
 - [ ] `amountEarned` - Valor recebidos em corridas: inicializado com 0.
 
 Além disso, a classe `Driver` deve possuir os seguintes métodos:
-- [ ] `getDrive(amount)`, que serve para a a motorista aceitar uma corrida.
+- [ ] `runDrive(amount)`, que serve para a a motorista aceitar uma corrida.
 
 Esse método deve obedecer as seguintes regras:
 - O parâmetro `amount` é o valor da corrida.
@@ -40,7 +40,7 @@ Esse método deve obedecer as seguintes regras:
 - A corrida só pode ser solicitada se a senha (`password`) estiver correta.
 - O parâmetro `driver` precisa, obrigatoriamente, ser do tipo `Driver`, caso contrário, a requisição não pode ser realizada.
 - O `amount` do passageiro **diminui** a cada corrida, de acordo com o parâmetro `amount` da função (esse valor será sempre **negativo**).
-- O método `getDrive(amount)` da motorista deve ser chamado, para aumentar o `amountEarned` e o `numberOfRides` da motorista escolhida.
+- O método `runDrive(amount)` da motorista deve ser chamado, para aumentar o `amountEarned` e o `numberOfRides` da motorista escolhida.
 
 Teste tudo o que foi criado.
 

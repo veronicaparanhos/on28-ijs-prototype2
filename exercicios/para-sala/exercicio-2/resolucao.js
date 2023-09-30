@@ -14,7 +14,7 @@ class Driver {
 		this.age = age;
 	}
 
-	getDrive(amount) {
+	runDrive(amount) {
 		this.amountEarned += amount;
 		this.numberOfRides++;
 	}
@@ -42,6 +42,6 @@ class Passenger {
 			return;
 		}
 		this.amountSpent -= amount;
-		driver.getDrive(amount);
+		driver.runDrive(amount);
 	}
 }
