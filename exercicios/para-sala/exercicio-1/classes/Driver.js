@@ -1,18 +1,20 @@
 export class Driver {
   name;
   age;
+  numberOfRides = 0;
+  amountEarned = 0;
 
   constructor(name, age) {
-    this.name = name;
-    this.age = age;
-    this.numberOfRides = 0;
-    this.amountEarned = 0;
+    if (age >= 18) {
+      this.name = name;
+      this.age = age;
+    } else {
+      throw "Você precisa ter 18 anos ou mais para ser motorista";
+    }
   }
-}
 
-export class Passenger {
-  name;
-  age;
-  password;
-  constructor()
+  runDrive(amount) {
+    this.numberOfRides++;
+    this.amountEarned += amount;
+  }
 }

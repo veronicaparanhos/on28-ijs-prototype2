@@ -1,46 +1,32 @@
-export class Driver {
-	name;
-	age;
-	numberOfRides = 0;
-	#amountEarned = 0;
+import { Person } from "./Person.js";
+
+export class Driver extends Person {
+  numberOfRides = 0;
 
   static drivers = [];
 
-	constructor(name, age) {
-		if (age < 18) {
-			return new Error(
-				'É necessário ter mais de 18 anos para ser um motorista'
-			);
-		}
-		this.name = name;
-		this.age = age;
+  constructor(name, age) {
+    if (age < 18) {
+      return new Error(
+        "É necessário ter mais de 18 anos para ser um motorista"
+      );
+    }
+    super(name, age);
     this.constructor.drivers.push({ name: name, age: age });
-	}
+  }
 
-	runDrive(amount) {
-		this.amountEarned += amount;
-		this.numberOfRides++;
-	}
+  runDrive(amount) {
+    this.amount += amount;
+    this.numberOfRides++;
+  }
 
   static numberOfDrivers() {
-		console.log(`O total de motoristas cadastradas é: ${this.drivers.length}`);
-	}
+    const numberOfDrivers = super.numberOfPersons(Driver.drivers);
+    console.log(`O total de motoristas cadastradas é: ${numberOfDrivers}`);
+  }
 
-	static ageAverage() {
-		const totalOfDrivers = this.drivers.length;
-
-    if(totalOfDrivers === 0) return;
-
-		const ageSum = this.drivers.reduce((total, next) => total + next.age, 0);
-		const ageAverage = (ageSum / totalOfDrivers).toFixed(2);
-		console.log(`A média de idade das motoristas é de: ${ageAverage}`);
-	}
-
-  get amountEarned() {
-		return this.#amountEarned;
-	}
-
-	set amountEarned(amount) {
-		this.#amountEarned = amount;
-	}
+  static ageAverage() {
+    const ageAverageReturned = super.ageAverage(Driver.drivers);
+    console.log(`A média de idade das motoristas é de: ${ageAverageReturned}`);
+  }
 }
