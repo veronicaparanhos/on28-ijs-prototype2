@@ -1,3 +1,4 @@
+import { Driver } from "../../exercicio-3/classes/Driver";
 export class Passenger {
 	name;
 	age;
@@ -15,7 +16,7 @@ export class Passenger {
 
 	requestDrive(driver, amount, password) {
 		if (!(driver instanceof Driver)) {
-			console.log('Motorista inválido!');
+			console.log('Insira uma motorista corretamente!');
 			return;
 		}
 		if (password !== this.#password) {
