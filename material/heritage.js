@@ -1,8 +1,11 @@
-class Person {
+class ReinoAnimal {}
+
+class Person extends ReinoAnimal {
   name;
   age;
 
 	constructor(name, age) {
+    super()
 		this.name = name;
 		this.age = age;
 	}
@@ -21,8 +24,15 @@ class User extends Person {
     this.email = email;
     this.password = password;
   }
+
+  speak() {
+    console.log('Essa pessoa é uma usuária.');
+    super.speak();
+  }
 }
 
 const user1 = new User('Luara', 28, 'luara@email.com', 123);
-console.log(user1)
-user1.speak();
+// console.log(user1)
+// user1.speak();
+
+console.log(user1 instanceof ReinoAnimal)
