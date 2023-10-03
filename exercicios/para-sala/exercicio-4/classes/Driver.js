@@ -1,4 +1,5 @@
-export class Driver {
+import { Person } from "./Person.js";
+export class Driver extends Person {
 	name;
 	age;
 	numberOfRides = 0;

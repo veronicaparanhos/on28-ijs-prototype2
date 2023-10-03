@@ -1,5 +1,6 @@
-import { Driver } from "../../exercicio-3/classes/Driver";
-export class Passenger {
+import { Driver } from "./Driver.js";
+import { Person } from "./Person.js";
+export class Passenger extends Person {
 	name;
 	age;
 	#password;
