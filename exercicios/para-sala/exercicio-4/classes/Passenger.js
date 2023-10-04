@@ -1,16 +1,12 @@
 import { Driver } from "./Driver.js";
 import { Person } from "./Person.js";
 export class Passenger extends Person {
-	name;
-	age;
 	#password;
-	#amountSpent = 0;
 
   static passengers = [];
 
 	constructor(name, age, password) {
-		this.name = name;
-		this.age = age;
+		super(name, age);
 		this.#password = password;
     this.constructor.passengers.push({ name: name, age: age });
 	}
@@ -24,7 +20,7 @@ export class Passenger extends Person {
 			console.log(`${this.name}, sua senha está incorreta!`);
 			return;
 		}
-		this.#amountSpent -= amount;
+		this.amount -= amount;
 		driver.runDrive(amount);
 	}
 
@@ -32,7 +28,7 @@ export class Passenger extends Person {
 		if (oldPassword === this.#password) {
 			this.#password = newPassword;
 		} else {
-			console.log('A senha antiga não correnponde!');
+			console.log('A senha antiga não corresponde!');
 		}
 	}
 
@@ -48,13 +44,5 @@ export class Passenger extends Person {
 		const ageSum = this.passengers.reduce((total, motorista) => total + motorista.age, 0);
 		const ageAverage = (ageSum / totalOfPassengers).toFixed(2);
 		console.log(`A média de idade das passageiras é de: ${ageAverage}`);
-	}
-
-  get amountSpent() {
-		return this.#amountSpent;
-	}
-
-	set amountSpent(amount) {
-		this.#amountSpent = amount;
 	}
 }

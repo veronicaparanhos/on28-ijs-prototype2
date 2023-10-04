@@ -1,9 +1,6 @@
 import { Person } from "./Person.js";
 export class Driver extends Person {
-	name;
-	age;
 	numberOfRides = 0;
-	#amountEarned = 0;
 
   static drivers = [];
 
@@ -13,13 +10,12 @@ export class Driver extends Person {
 				'É necessário ter mais de 18 anos para ser um motorista'
 			);
 		}
-		this.name = name;
-		this.age = age;
+		super(name, age);
     this.constructor.drivers.push({ name: name, age: age });
 	}
 
 	runDrive(amount) {
-		this.amountEarned += amount;
+		this.amount += amount;
 		this.numberOfRides++;
 	}
 
@@ -35,13 +31,5 @@ export class Driver extends Person {
 		const ageSum = this.drivers.reduce((total, motorista) => total + motorista.age, 0);
 		const ageAverage = (ageSum / totalOfDrivers).toFixed(2);
 		console.log(`A média de idade das motoristas é de: ${ageAverage}`);
-	}
-
-  get amountEarned() {
-		return this.#amountEarned;
-	}
-
-	set amountEarned(amount) {
-		this.#amountEarned = amount;
 	}
 }
