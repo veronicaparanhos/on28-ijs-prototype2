@@ -33,16 +33,12 @@ export class Passenger extends Person {
 	}
 
   static numberOfPassengers() {
-		console.log(`O total de passageiras cadastradas é: ${this.passengers.length}`);
+		const numberOfPassengers = super.numberOfPersons(Passenger.passengers);
+		console.log(`O total de passageiras cadastradas é: ${numberOfPassengers}`);
 	}
 
 	static ageAverage() {
-		const totalOfPassengers = this.passengers.length;
-
-    if(totalOfPassengers === 0) return;
-
-		const ageSum = this.passengers.reduce((total, motorista) => total + motorista.age, 0);
-		const ageAverage = (ageSum / totalOfPassengers).toFixed(2);
-		console.log(`A média de idade das passageiras é de: ${ageAverage}`);
+		const ageAverageReturned = super.ageAverage(Passenger.passengers);
+		console.log(`A média de idade das passageiras é de: ${ageAverageReturned}`);
 	}
 }

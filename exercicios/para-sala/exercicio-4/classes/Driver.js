@@ -20,16 +20,12 @@ export class Driver extends Person {
 	}
 
   static numberOfDrivers() {
-		console.log(`O total de motoristas cadastradas é: ${this.drivers.length}`);
+		const numberOfDrivers = super.numberOfPersons(Driver.drivers);
+		console.log(`O total de motoristas cadastradas é: ${numberOfDrivers}`);
 	}
 
 	static ageAverage() {
-		const totalOfDrivers = this.drivers.length;
-
-    if(totalOfDrivers === 0) return;
-
-		const ageSum = this.drivers.reduce((total, motorista) => total + motorista.age, 0);
-		const ageAverage = (ageSum / totalOfDrivers).toFixed(2);
-		console.log(`A média de idade das motoristas é de: ${ageAverage}`);
+		const ageAverageReturned = super.ageAverage(Driver.drivers);
+		console.log(`A média de idade das motoristas é de: ${ageAverageReturned}`);
 	}
 }
